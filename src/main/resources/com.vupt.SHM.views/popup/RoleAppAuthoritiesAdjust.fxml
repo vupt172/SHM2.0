@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="saving-view" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vupt.SHM.views.popup.RoleAppAuthoritiesAdjusting">
+   <children>
+      <HBox prefHeight="42.0" prefWidth="400.0" styleClass="saving-header">
+         <children>
+            <Label fx:id="lbTitle" layoutX="1.0" layoutY="1.0" prefHeight="28.0" prefWidth="358.0" text="Role App Authorities Adjusting">
+               <graphic>
+                  <SVGPath content="M32 10l-16-8-16 8 16 8 16-8zM16 4.655l10.689 5.345-10.689 5.345-10.689-5.345 10.689-5.345zM28.795 14.398l3.205 1.602-16 8-16-8 3.205-1.602 12.795 6.398zM28.795 20.398l3.205 1.602-16 8-16-8 3.205-1.602 12.795 6.398z" fill="WHITE" styleClass="icon" />
+               </graphic>
+            </Label>
+         </children>
+      </HBox>
+      <VBox styleClass="saving-body" VBox.vgrow="ALWAYS">
+         <children>
+            <TreeView fx:id="tvAuthorities" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+      <HBox prefWidth="400.0" styleClass="saving-footer">
+         <children>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#save" prefWidth="80.0" styleClass="accent" text="Save" />
+            <Button mnemonicParsing="false" onAction="#close" prefWidth="80.0" text="Cancel" />
+         </children>
+      </HBox>
+   </children>
+   <stylesheets>
+      <URL value="@../../styles/application.css" />
+      <URL value="@../../styles/theme.css" />
+   </stylesheets>
+</VBox>

@@ -1,0 +1,30 @@
+# Bỏ qua thư mục build của Maven
+/target/
+
+# Bỏ qua các tệp cấu hình cụ thể của IDE
+/.idea/
+/*.iml
+/*.ipr
+/*.iws
+/.vscode/
+/*.sublime-workspace
+/*.sublime-project
+
+# Bỏ qua tệp hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Bỏ qua các tệp nhật ký
+*.log
+
+# Bỏ qua các tệp biên dịch
+*.class
+
+# Bỏ qua tệp tạm thời
+*.tmp
+*.bak
+*.swp
+
+# Bỏ qua tệp cấu hình cá nhân
+*.yaml
+*.env

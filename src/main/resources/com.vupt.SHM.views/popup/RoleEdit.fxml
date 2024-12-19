@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="saving-view" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vupt.SHM.views.popup.RoleSaving">
+    <children>
+        <HBox prefHeight="42.0" prefWidth="400.0" styleClass="saving-header">
+            <children>
+                <Label fx:id="lbTitle" layoutX="1.0" layoutY="1.0" prefHeight="353.0" prefWidth="249.0" text="Role Edit">
+                    <graphic>
+                        <SVGPath content="M32 10l-16-8-16 8 16 8 16-8zM16 4.655l10.689 5.345-10.689 5.345-10.689-5.345 10.689-5.345zM28.795 14.398l3.205 1.602-16 8-16-8 3.205-1.602 12.795 6.398zM28.795 20.398l3.205 1.602-16 8-16-8 3.205-1.602 12.795 6.398z" fill="WHITE" styleClass="icon" />
+                    </graphic></Label>
+            </children>
+        </HBox>
+        <VBox styleClass="saving-body" VBox.vgrow="ALWAYS">
+            <children>
+                <GridPane hgap="5.0" vgap="5.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints maxWidth="128.00000762939453" minWidth="120.0" prefWidth="128.00000762939453" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="445.9999923706054" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Id :" />
+                        <Label style="-fx-font-style: bold;" text="Name :" GridPane.rowIndex="1" />
+                        <Label text="Code :" GridPane.rowIndex="2" />
+                        <TextField fx:id="tfId" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+                        <TextField fx:id="tfName" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="tfCode" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label id="form-message" fx:id="lbMessage" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+        <HBox prefWidth="400.0" styleClass="saving-footer">
+            <children>
+                <Button fx:id="btnSave" mnemonicParsing="false" onAction="#save" prefWidth="80.0" styleClass="accent" text="Save" />
+                <Button mnemonicParsing="false" onAction="#close" prefWidth="80.0" text="Cancel" />
+            </children>
+        </HBox>
+    </children>
+    <stylesheets>
+        <URL value="@../../styles/application.css" />
+        <URL value="@../../styles/theme.css" />
+    </stylesheets>
+</VBox>

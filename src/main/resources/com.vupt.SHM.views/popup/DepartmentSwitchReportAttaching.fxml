@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" styleClass="saving-view" stylesheets="@../../styles/application.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vupt.SHM.views.popup.DepartmentSwitchReportAttaching">
+   <children>
+      <HBox styleClass="saving-header">
+         <children>
+            <Label fx:id="lbTitle" text="THÊM FILE ĐÍNH KÈM CHO BIÊN BẢN" />
+         </children>
+      </HBox>
+      <ScrollPane VBox.vgrow="ALWAYS">
+         <content>
+            <ListView fx:id="listBox" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="600.0" />
+         </content>
+      </ScrollPane>
+      <HBox prefHeight="16.0" prefWidth="600.0" styleClass="saving-footer">
+         <children>
+            <Button mnemonicParsing="false" onAction="#uploadFile" text="Upload">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/upload.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="520.0" layoutY="20.0" mnemonicParsing="false" onAction="#save" styleClass="accent" text="Save" />
+            <Button layoutX="520.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" text="Cancel" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

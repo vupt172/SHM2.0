@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="content-view" stylesheets="@../styles/application.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vupt.SHM.views.RepairterController">
+   <children>
+      <HBox styleClass="content-header">
+         <children>
+            <ToolBar prefHeight="46.0" prefWidth="515.0" HBox.hgrow="ALWAYS">
+               <items>
+                  <Button fx:id="btnCreate" mnemonicParsing="false" onAction="#createRepairterView" styleClass="success" text="Thêm">
+                     <graphic>
+                        <FontAwesomeIconView id="icon" fill="WHITE" glyphName="PLUS" styleClass="accent" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="accent" text="Sửa">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" text="" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="73.0" layoutY="10.0" mnemonicParsing="false" styleClass="danger" text="Xóa">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="TRASH" />
+                     </graphic>
+                  </Button>
+               </items>
+            </ToolBar>
+         </children>
+      </HBox>
+      <HBox style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" pannable="true" vbarPolicy="ALWAYS" HBox.hgrow="ALWAYS">
+               <content>
+                  <TableView fx:id="tbRepairter">
+                     <columns>
+                        <TableColumn fx:id="colId" prefWidth="70.0" text="Id" />
+                        <TableColumn fx:id="colName" prefWidth="250.0" text="Người Sửa Chữa" />
+                        <TableColumn fx:id="colCompany" prefWidth="250.0" text="Công Ty" />
+                        <TableColumn fx:id="colPhone" prefWidth="250.0" text="SĐT" />
+                        <TableColumn fx:id="colNote" prefWidth="250.0" text="Note" />
+                     </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <HBox prefHeight="51.0" prefWidth="1200.0" styleClass="content-footer">
+         <children>
+            <TextField />
+            <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" text="Tìm kiếm" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

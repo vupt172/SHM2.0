@@ -1,0 +1,311 @@
+@import url("theme.css");
+
+* {
+    primary-text: #537297;
+    secondary-text: rgb(195, 208, 224);
+    primary-bg: #476283;
+    secondary-bg: rgb(236, 239, 245);
+}
+
+/* General*/
+.sp-10 {
+    -fx-spacing: 10px;
+}
+
+.al-center-right {
+    -fx-alignment: center-right;
+}
+
+/* Other#*/
+.special-titled-pane.titled-pane > .title {
+    -fx-background-color: -color-accent-emphasis;
+
+}
+
+.special-titled-pane.titled-pane > .title > .text {
+    -fx-fill: -color-accent-muted;
+}
+
+.attached-file-list {
+    -fx-spacing: 10px;
+}
+
+.attached-file-list .button {
+    -fx-pref-width: 150px;
+    -fx-background-color: #f0f0f0; /* Màu nền xám nhạt */
+    -fx-background-radius: 10px; /* Bo tròn các góc */
+    -fx-padding: 3px; /* Khoảng cách giữa văn bản và viền */
+    -fx-border-color: #d4d4d4; /* Màu viền xám */
+    -fx-border-radius: 10px; /* Bo tròn các góc của viền */
+    -fx-border-width: 1px; /* Độ rộng viền */
+    -fx-font-family: 'Arial'; /* Font chữ Arial */
+    -fx-font-size: 12px; /* Kích thước font */
+    -fx-text-fill: #333333; /* Màu chữ đen */
+    -fx-alignment: left;
+}
+
+.attached-file-list .button:hover {
+    -fx-background-color: #e0e0e0; /* Màu nền khi di chuột */
+}
+
+.attached-file-list .button:pressed {
+    -fx-background-color: #d0d0d0; /* Màu nền khi nhấn */
+}
+
+#form-message {
+    -fx-text-fill: -color-warning-emphasis;
+    -fx-font-size: 12;
+}
+
+/* Function : Login*/
+.login-view {
+    -fx-pref-width: 600px;
+    -fx-font-family: "Segoe UI";
+}
+
+.login-header {
+    -fx-background-color: -color-accent-emphasis;
+    -fx-padding: 5px;
+
+}
+
+.login-header .label {
+    -fx-text-fill: -color-accent-muted;
+}
+
+.login-header-body {
+    -fx-alignment: center;
+    -fx-font-size: 24px;
+}
+
+.login-header-title {
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+}
+
+
+.login-body {
+    -fx-background-color: -color-accent-subtle;
+    -fx-padding: 10;
+    -fx-font-size: 15px;
+}
+
+.login-body .label {
+    -fx-text-fill: -color-accent-fg;
+}
+
+.login-footer {
+    -fx-background-color: -color-accent-subtle;
+    -fx-padding: 0 15 15 15;
+    -fx-spacing: 10px;
+    -fx-alignment: center-right;
+}
+
+.login-footer .button {
+    -fx-min-width: 80px;
+}
+
+
+/* Function : SHM Application*/
+.shm-view {
+    -fx-pref-width: 1200px;
+    -fx-font-size: 13px;
+    -fx-font-family: "Segoe UI";
+}
+
+.shm-header {
+}
+
+.shm-body {
+
+}
+
+.shm-footer {
+    -fx-background-color: #734c1e;
+    -fx-alignment: center-left;
+    -fx-padding: 5px;
+    -fx-font-size: 12px;
+
+}
+
+.shm-footer .label {
+    -fx-text-fill: #fffcc8;
+}
+
+/* Function : Display function app*/
+
+.content-view {
+    -fx-pref-width: 1200px;
+    -fx-max-width: 3000px;
+    -fx-min-height: 300px;
+    -fx-background-color: secondary-bg;
+    /*-fx-spacing: 5px;*/
+}
+
+.content-view .content-filter {
+    -fx-background-color: secondary-bg;
+}
+
+.content-view .sub-content-view {
+    -fx-background-color: -color-accent-subtle;
+}
+
+.content-view .tab-pane .tab-header-area {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+}
+
+
+.content-view .btn-close-view {
+    -fx-background-color: #FBB825;
+}
+
+.content-view .btn-close-view:hover {
+    -fx-background-color: #FBCF67;
+}
+
+.content-body {
+    -fx-background-color: -color-accent-subtle;
+
+}
+
+/*.content-header .tool-bar {
+    -fx-padding: 10px;
+    -fx-spacing: 5px;
+}*/
+.content-header .tool-bar .button {
+    -fx-min-width: 80px;
+}
+
+/*.content-summary {
+    -fx-alignment: center-right;
+    -fx-background-color: -color-neutral-muted;
+    -fx-padding: 5 10 5 10;
+}*/
+
+/*
+.content-summary .label {
+    -fx-text-fill: -color-warning-r4;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-font-family: "Arial Narrow";
+}
+*/
+
+.content-footer {
+
+}
+
+.content-footer .text-field, content-header .combo-box {
+    -fx-pref-width: 150px;
+}
+
+.content-footer .tool-bar-search {
+    -fx-alignment: center-right;
+}
+
+/* Function : Save or Edit Entity*/
+.saving-view {
+    -fx-min-width: 600px;
+    -fx-font-family: "Segoe UI";
+}
+
+.saving-header {
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-background-color: -color-accent-emphasis;
+}
+
+.saving-header .label {
+    -fx-text-alignment: center;
+    -fx-font-size: 16px;
+    -fx-text-fill: -color-accent-muted;
+}
+
+.saving-header .icon {
+    -fx-fill: -color-accent-muted;
+}
+
+.saving-body {
+    -fx-padding: 10px;
+    -fx-background-color: -color-accent-subtle;
+    -fx-font-size: 13px;
+
+}
+
+.saving-body #btnRefresh {
+    -fx-text-fill: -color-accent-fg;
+}
+
+.saving-body #btnRefresh:hover #btnRefresh:focused {
+    -fx-text-fill: red;
+}
+
+.saving-body .label {
+    -fx-text-fill: -color-accent-fg;
+}
+
+.saving-footer {
+
+    -fx-padding: 10px;
+    -fx-alignment: center-right;
+    -fx-spacing: 5px;
+    -fx-background-color: -color-accent-subtle;
+
+}
+
+.saving-footer .button {
+    -fx-min-width: 80px;
+}
+
+/* Function : EquipmentDetail*/
+.equipment-detail-view {
+    -fx-font-size: 15px;
+}
+
+.equipment-detail-header {
+    -fx-padding: 10px;
+    -fx-background-color: -color-accent-emphasis;
+}
+
+.equipment-detail-header .label {
+    -fx-font-size: 18px;
+    -fx-text-fill: -color-accent-muted;
+}
+
+.equipment-detail-body {
+    -fx-spacing: 20px;
+    -fx-padding: 10px;
+    -fx-background-color: -color-accent-subtle;
+}
+
+
+.equipment-detail-body .label {
+    -fx-text-fill: -color-accent-fg;
+}
+
+.equipment-detail-body #equipment-detail-name {
+    -fx-text-fill: black;
+}
+
+.report-view {
+    -fx-font-size: 13px;
+    -fx-background-color: -color-accent-subtle;
+}
+
+.report-header {
+    -fx-padding: 10px;
+}
+
+.report-header .label {
+    -fx-font-weight: 700;
+    -fx-font-size: 18px;
+}
+
+.report-body {
+    -fx-padding: 10px;
+}
+
+.report-footer {
+    -fx-padding: 10px;
+}

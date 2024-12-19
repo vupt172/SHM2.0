@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shm?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+config:
+  app:
+    version: "2.0.1"
+  ftp:
+    host: "127.0.0.1"
+    port: 6868
+    username: "shm"
+    password: "vupt172Fuzzy96"
+    DepartmentSwitchReportsFolder: "DepartmentSwitchReports"

@@ -1,0 +1,5 @@
+.test{
+    -fx-effect: dropshadow(three-pass-box, #000, 10, 0.8, 0, 0); /* Sử dụng DropShadow để tạo hiệu ứng phồng lên */
+    -fx-alignment: center; /* Canh giữa HBox */
+    -fx-background-color: #f0f0f0;
+}

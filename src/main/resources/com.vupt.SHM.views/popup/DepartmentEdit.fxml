@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="saving-view" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vupt.SHM.views.popup.DepartmentEditing">
+   <children>
+      <HBox prefHeight="42.0" prefWidth="400.0" styleClass="saving-header">
+         <children>
+            <SVGPath content="M12 11.484q1.031 0 1.758-0.727t0.727-1.758-0.727-1.758-1.758-0.727-1.758 0.727-0.727 1.758 0.727 1.758 1.758 0.727zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z" fill="WHITE" styleClass="icon" />
+            <Label fx:id="lbTitle" layoutX="1.0" layoutY="1.0" prefHeight="353.0" prefWidth="249.0" text="DepartmentEdit" />
+         </children>
+      </HBox>
+      <VBox styleClass="saving-body" VBox.vgrow="ALWAYS">
+         <children>
+            <GridPane hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="252.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Id :" />
+                  <Label style="-fx-font-style: bold;" text="Tên bộ phân :" GridPane.rowIndex="1" />
+                  <TextField fx:id="tfId" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+                  <TextField fx:id="tfName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="tfCode" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cbTypeList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="255.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                  <Label text="Tạm ngưng" GridPane.rowIndex="5" />
+                  <CheckBox fx:id="cbIsSuspended" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label text="Loại :" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cbParent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="252.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="Thuộc về :" GridPane.rowIndex="4" />
+                  <Label text="Code :" GridPane.rowIndex="2" />
+                  <Label id="form-message" fx:id="lbMessage" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+      <HBox prefWidth="400.0" styleClass="saving-footer">
+         <children>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#save" prefWidth="80.0" styleClass="accent" text="Save" />
+            <Button mnemonicParsing="false" onAction="#close" prefWidth="80.0" text="Cancel" />
+         </children>
+      </HBox>
+   </children>
+   <stylesheets>
+      <URL value="@../../styles/application.css" />
+      <URL value="@../../styles/theme.css" />
+   </stylesheets>
+</VBox>

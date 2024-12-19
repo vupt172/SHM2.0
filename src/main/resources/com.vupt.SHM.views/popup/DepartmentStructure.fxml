@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="saving-view" stylesheets="@../../styles/application.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vupt.SHM.views.popup.DepartmentStructureViewing">
+   <children>
+      <HBox styleClass="saving-header">
+         <children>
+            <Label fx:id="lbAccountInfo" maxHeight="-Infinity" maxWidth="-Infinity" text="SƠ ĐỒ CẤU TRÚC BỘ PHẬN">
+               <graphic>
+                  <SVGPath content="M0 32h16v-32h-16v32zM10 4h4v4h-4v-4zM10 12h4v4h-4v-4zM10 20h4v4h-4v-4zM2 4h4v4h-4v-4zM2 12h4v4h-4v-4zM2 20h4v4h-4v-4zM18 10h14v2h-14zM18 32h4v-8h6v8h4v-18h-1M0 32h16v-32h-16v32zM10 4h4v4h-4v-4zM10 12h4v4h-4v-4zM10 20h4v4h-4v-4zM2 4h4v4h-4v-4zM2 12h4v4h-4v-4zM2 20h4v4h-4v-4zM18 10h14v2h-14zM18 32h4v-8h6v8h4v-18h-14z" fill="WHITE" styleClass="icon" />
+               </graphic>
+            </Label>
+         </children>
+      </HBox>
+      <TreeView fx:id="tvDepartmentStructure" VBox.vgrow="ALWAYS" />
+      <HBox prefWidth="400.0" styleClass="saving-footer">
+         <children>
+            <Button fx:id="btnClose" mnemonicParsing="false" onAction="#close" prefWidth="80.0" text="Close" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

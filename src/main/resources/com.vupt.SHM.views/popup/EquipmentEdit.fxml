@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="saving-view" stylesheets="@../../styles/application.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vupt.SHM.views.popup.EquipmentEditing">
+    <children>
+        <HBox prefHeight="42.0" prefWidth="400.0" styleClass="saving-header">
+            <children>
+                <SVGPath content="M28 22v-16c0-1.1-0.9-2-2-2h-20c-1.1 0-2 0.9-2 2v16h-4v6h32v-6h-4zM20 26h-8v-2h8v2zM26 22h-20v-15.996c0.001-0.001 0.002-0.003 0.004-0.004h19.993c0.001 0.001 0.003 0.002 0.004 0.004v15.996z" fill="WHITE" styleClass="icon" />
+                <Label fx:id="lbTitle" layoutX="1.0" layoutY="1.0" prefHeight="353.0" prefWidth="249.0" text="EquipmentEdit" />
+            </children>
+        </HBox>
+      <HBox style="-fx-spacing: 10;" styleClass="saving-body" VBox.vgrow="ALWAYS">
+         <children>
+                <GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="5.0">
+                    <columnConstraints>
+                        <ColumnConstraints maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="300.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Id :" />
+                        <Label style="-fx-font-style: bold;" text="Tên thiết bị :" GridPane.rowIndex="1" />
+                        <TextField fx:id="tfId" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="300.0" GridPane.columnIndex="1" />
+                  <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                              <TextField fx:id="tfName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="300.0" />
+                     </children>
+                  </VBox>
+                        <Label text="Code :" GridPane.rowIndex="2" />
+                        <Label text="Năm :" GridPane.rowIndex="3" />
+                  <Label text="Trạng thái :" GridPane.rowIndex="4" />
+                  <TextField fx:id="tfCode" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cbStatus" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="Số lượng :" GridPane.rowIndex="5" />
+                  <Label text="Đơn giá :" GridPane.rowIndex="6" />
+                  <Spinner fx:id="spinnerCount" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="tfPrice" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="tfYear" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    </children>
+                </GridPane>
+            <GridPane hgap="5.0" layoutX="20.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="300.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Danh mục :" />
+                  <ComboBox fx:id="cbCategory" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" />
+                  <Label text="Địa điểm :" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cbDepartment" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Note :" GridPane.rowIndex="3" />
+                  <TextArea fx:id="taNote" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="300.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Chủ sở hữu :" GridPane.rowIndex="1" />
+                  <TextField fx:id="tfOwner" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label id="form-message" fx:id="lbMessage" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+        <HBox prefWidth="400.0" styleClass="saving-footer">
+            <children>
+            <Button fx:id="btnGenerateCode" layoutX="716.0" layoutY="20.0" mnemonicParsing="false" onAction="#generateCode" prefHeight="31.0" prefWidth="111.0" styleClass="success" text="Generate Code" />
+                <Button fx:id="btnSave" mnemonicParsing="false" onAction="#save" prefWidth="80.0" styleClass="accent" text="Save" />
+                <Button mnemonicParsing="false" onAction="#close" prefWidth="80.0" text="Cancel" />
+            </children>
+        </HBox>
+    </children>
+</VBox>
