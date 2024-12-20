@@ -47,6 +47,11 @@
                         <MenuItem fx:id="menuItemStatistic" mnemonicParsing="false" onAction="#manageStatistic" text="Thống kê thiết bị" />
                      </items>
                   </Menu>
+                  <Menu mnemonicParsing="false" text="Sửa Chữa, Thanh Lý">
+                     <items>
+                        <MenuItem fx:id="menuItemEquipmentRequest" mnemonicParsing="false" onAction="#manageEquipmentRequest" text="Quản lý giấy đề nghị" />
+                     </items>
+                  </Menu>
                   <Menu fx:id="menuAdmin" mnemonicParsing="false" text="Hệ Thống">
                      <items>
                         <MenuItem fx:id="menuItemAppAuthority" mnemonicParsing="false" onAction="#manageAppAuthority" text="Danh sách quyền " />

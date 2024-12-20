@@ -13,7 +13,7 @@ public interface BaseController<T> extends IWindowController {
 
     void deleteEntityView();
 
-    void save(T paramT);
+    void save(T t);
 
     void reload();
 

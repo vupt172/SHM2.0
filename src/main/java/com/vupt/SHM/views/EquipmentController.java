@@ -17,10 +17,7 @@ import com.vupt.SHM.services.CategoryService;
 import com.vupt.SHM.services.DepartmentService;
 import com.vupt.SHM.services.EmployeeService;
 import com.vupt.SHM.services.EquipmentService;
-import com.vupt.SHM.utils.AuthenticationUtils;
-import com.vupt.SHM.utils.DateTimeUtils;
-import com.vupt.SHM.utils.DisplayTextUtils;
-import com.vupt.SHM.utils.EquipmentDetailMouseClickHandler;
+import com.vupt.SHM.utils.*;
 import com.vupt.SHM.views.BaseController;
 import com.vupt.SHM.views.IWindowController;
 import com.vupt.SHM.views.common.CustomAlert;
@@ -220,7 +217,7 @@ public class EquipmentController implements BaseController<EquipmentSavingDto> {
                     if (item == null || empty) {
                         setText(null);
                     } else {
-                        setText(item == -1 ? "" : item.toString()); // Hiển thị tên sản phẩm
+                        setText(item == -1 ? "" : FormatUtils.formatVNDCurrency(item)); // Hiển thị tên sản phẩm
                     }
                 }
             };
