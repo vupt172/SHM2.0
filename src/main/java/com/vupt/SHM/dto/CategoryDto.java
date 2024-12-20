@@ -8,4 +8,9 @@ public class CategoryDto {
     private String name;
     private String code;
     private boolean isSuspended;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

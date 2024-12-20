@@ -11,4 +11,9 @@ public class DepartmentDto {
     private DepartmentType type;
     private boolean isSuspended;
     private DepartmentDto parent;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

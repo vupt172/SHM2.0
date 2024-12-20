@@ -1,10 +1,12 @@
 package com.vupt.SHM.views;
 
 import com.vupt.SHM.MyApplication;
+import com.vupt.SHM.constant.AppConstants;
 import com.vupt.SHM.constant.AuthorityCode;
 import com.vupt.SHM.dto.AccountDto;
 import com.vupt.SHM.dto.AccountPasswordChangingDto;
 import com.vupt.SHM.entity.Account;
+import com.vupt.SHM.entity.EquipmentRequest;
 import com.vupt.SHM.mapstruct.mapper.MapstructMapper;
 import com.vupt.SHM.repositories.CategoryRepository;
 import com.vupt.SHM.services.AccountService;
@@ -81,7 +83,7 @@ public class SHMController {
     MenuItem menuItemEquipment;
     List<WindowObject> windowObjectList = new ArrayList<>();
     @FXML
-    MenuItem menuItemEquipmentGroup;
+    MenuItem menuItemEquipmentRequest;
     @FXML
     MenuItem menuItemEquipmentHistory;
     @FXML
@@ -138,6 +140,7 @@ public class SHMController {
 
     private void initMenu() {
         this.menuItemEquipment.setId("Quản lý thiết bị");
+        this.menuItemEquipmentRequest.setId(AppConstants.MENU_REQUIPMENT_REQUEST);
         this.menuItemEquipmentHistory.setId("Quản lý lịch sử thiết bị");
         this.menuItemEmployee.setId("Quản lý nhân viên");
         this.menuItemDepartment.setId("Quản lý bộ phận");
@@ -220,6 +223,10 @@ public class SHMController {
     @FXML
     public void manageEquipment() throws IOException {
         updateStackPane(this.menuItemEquipment, () -> EquipmentController.loadView(this.stage, this::closeView));
+    }
+    @FXML
+    public void manageEquipmentRequest() throws IOException {
+        updateStackPane(this.menuItemEquipmentRequest, () -> EquipmentRequestController.loadView(this.stage, this::closeView));
     }
 
     @FXML

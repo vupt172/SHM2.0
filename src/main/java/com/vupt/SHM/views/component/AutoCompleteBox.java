@@ -27,13 +27,22 @@ public class AutoCompleteBox<T> implements EventHandler {
     public static <T> com.vupt.SHM.views.component.AutoCompleteBox build(ComboBox<T> comboBox) {
         return new com.vupt.SHM.views.component.AutoCompleteBox<>(comboBox);
     }
+    public static <T> com.vupt.SHM.views.component.AutoCompleteBox build(ComboBox<T> comboBox,StringConverter<T> converter) {
+        return new com.vupt.SHM.views.component.AutoCompleteBox<>(comboBox,converter);
+    }
 
     public AutoCompleteBox(ComboBox<T> comboBox) {
         this.comboBox = comboBox;
-
         this.data = comboBox.getItems();
         doAutoCompleteBox();
     }
+    public AutoCompleteBox(ComboBox<T> comboBox,StringConverter<T> converter) {
+        this.comboBox = comboBox;
+        this.comboBox.setConverter(converter);
+        this.data = comboBox.getItems();
+        doAutoCompleteBox();
+    }
+
 
     public AutoCompleteBox(ComboBox<T> comboBox, Node nextNode) {
         this.comboBox = comboBox;

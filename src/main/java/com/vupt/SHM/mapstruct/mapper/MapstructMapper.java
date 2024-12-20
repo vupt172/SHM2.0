@@ -1,29 +1,7 @@
 package com.vupt.SHM.mapstruct.mapper;
 
-import com.vupt.SHM.dto.AccountDto;
-import com.vupt.SHM.dto.AccountExDto;
-import com.vupt.SHM.dto.AccountPasswordChangingDto;
-import com.vupt.SHM.dto.CategoryDto;
-import com.vupt.SHM.dto.DepartmentDto;
-import com.vupt.SHM.dto.DepartmentSwitchReportAttachingDto;
-import com.vupt.SHM.dto.DepartmentSwitchReportDetailDto;
-import com.vupt.SHM.dto.DepartmentSwitchReportDto;
-import com.vupt.SHM.dto.DepartmentSwitchReportExDto;
-import com.vupt.SHM.dto.DepartmentSwitchReportFileDto;
-import com.vupt.SHM.dto.DepartmentSwitchReportSavingDto;
-import com.vupt.SHM.dto.EmployeeDto;
-import com.vupt.SHM.dto.EquipmentDto;
-import com.vupt.SHM.dto.EquipmentSavingDto;
-import com.vupt.SHM.dto.RepairterDTO;
-import com.vupt.SHM.entity.Account;
-import com.vupt.SHM.entity.Category;
-import com.vupt.SHM.entity.Department;
-import com.vupt.SHM.entity.DepartmentSwitchReport;
-import com.vupt.SHM.entity.DepartmentSwitchReportDetail;
-import com.vupt.SHM.entity.DepartmentSwitchReportFile;
-import com.vupt.SHM.entity.Employee;
-import com.vupt.SHM.entity.Equipment;
-import com.vupt.SHM.entity.Repairter;
+import com.vupt.SHM.dto.*;
+import com.vupt.SHM.entity.*;
 
 import java.util.List;
 
@@ -125,6 +103,15 @@ public interface MapstructMapper {
     DepartmentSwitchReportFileDto departmentSwitchReportFileToDepartmentSwitchReportFileDto(DepartmentSwitchReportFile paramDepartmentSwitchReportFile);
 
     DepartmentSwitchReportAttachingDto departmentSwitchReportToDepartmentSwitchReportAttachingDto(DepartmentSwitchReport paramDepartmentSwitchReport);
+
+    @Mapping(source = "department", target = "departmentDto")
+    EquipmentRequestDto equipmentRequestToEquipmentRequestDto(EquipmentRequest equipmentRequest);
+    List<EquipmentRequestDto> equipmentRequestsToEquipmentRequestDtos(List<EquipmentRequest> equipmentRequestList);
+    @Mapping(source = "departmentDto",target = "department")
+    EquipmentRequest equipmentRequestSavingDtoToEquipmentRequest(EquipmentRequestSavingDto equipmentRequestSavingDto);
+    @Mapping(source = "departmentDto",target = "department")
+    void equipmentRequestSavingDtoToSelectedEquipmentRequest(EquipmentRequestSavingDto equipmentRequestSavingDto,@MappingTarget EquipmentRequest equipmentRequest);
+    EquipmentRequestSavingDto equipmentRequestDtoToEquipmentRequestSavingDto(EquipmentRequestDto equipmentRequestDto);
 }
 
 

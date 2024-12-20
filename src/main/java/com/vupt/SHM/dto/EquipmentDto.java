@@ -20,4 +20,9 @@ public class EquipmentDto {
     private String note;
     private Date createdDate;
     private Date lastModifiedDate;
+
+    @Override
+    public String toString() {
+        return code+" "+name;
+    }
 }
