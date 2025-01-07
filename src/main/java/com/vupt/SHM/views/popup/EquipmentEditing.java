@@ -5,15 +5,19 @@ import com.vupt.SHM.constant.EquipmentStatus;
 import com.vupt.SHM.constant.SuggestionList;
 import com.vupt.SHM.dto.CategoryDto;
 import com.vupt.SHM.dto.DepartmentDto;
+import com.vupt.SHM.dto.EquipmentPackageDto;
 import com.vupt.SHM.dto.EquipmentSavingDto;
 import com.vupt.SHM.entity.Category;
 import com.vupt.SHM.exceptions.AppException;
 import com.vupt.SHM.mapstruct.mapper.MapstructMapper;
 import com.vupt.SHM.services.CategoryService;
 import com.vupt.SHM.services.DepartmentService;
+import com.vupt.SHM.services.EquipmentPackageService;
 import com.vupt.SHM.services.EquipmentService;
+import com.vupt.SHM.views.EquipmentPackageController;
 import com.vupt.SHM.views.component.AutoCompleteBox;
 import com.vupt.SHM.views.component.DepartmentConverter;
+import com.vupt.SHM.views.component.EquipmentPackageConverter;
 import com.vupt.SHM.views.component.EquipmentStatusListCell;
 import com.vupt.SHM.views.popup.SavingPopupController;
 
@@ -49,6 +53,10 @@ public class EquipmentEditing  implements SavingPopupController<EquipmentSavingD
     @Autowired
     EquipmentService equipmentService;
     @Autowired
+    EquipmentPackageService equipmentPackageService;
+    @Autowired
+    EquipmentPackageConverter equipmentPackageConverter;
+    @Autowired
     private CategoryService categoryService;
     @Autowired
     private DepartmentService departmentService;
@@ -68,12 +76,6 @@ public class EquipmentEditing  implements SavingPopupController<EquipmentSavingD
     TextField tfYear;
     @FXML
     ComboBox<EquipmentStatus> cbStatus;
-
-    public static void loadView(Consumer<EquipmentSavingDto> saveHandler) {
-        /*  81 */
-        loadView(null, saveHandler);
-    }
-
     @FXML
     Spinner<Integer> spinnerCount;
     @FXML
@@ -84,6 +86,8 @@ public class EquipmentEditing  implements SavingPopupController<EquipmentSavingD
     TextField tfOwner;
     @FXML
     ComboBox<DepartmentDto> cbDepartment;
+    @FXML
+    ComboBox<EquipmentPackageDto> cbEquipmentPackage;
     @FXML
     TextArea taNote;
     @FXML
@@ -97,6 +101,10 @@ public class EquipmentEditing  implements SavingPopupController<EquipmentSavingD
     private Consumer<EquipmentSavingDto> saveHandler;
     private EquipmentSavingDto equipmentSavingDto;
 
+
+    public static void loadView(Consumer<EquipmentSavingDto> saveHandler) {
+        loadView(null, saveHandler);
+    }
     public static void loadView(EquipmentSavingDto equipmentSavingDto, Consumer<EquipmentSavingDto> saveHandler) {
         try {
             Stage stage = new Stage(StageStyle.UNDECORATED);
@@ -144,6 +152,9 @@ public class EquipmentEditing  implements SavingPopupController<EquipmentSavingD
         this.spinnerCount.setValueFactory(valueFactory);
         this.cbCategory.getItems().addAll(this.categoryService.findAllDtoIgnoreSuspended());
         this.cbDepartment.getItems().addAll(this.departmentService.findAllDtoIgnoreSuspended());
+        this.cbEquipmentPackage.getItems().addAll(equipmentPackageService.findAllDto());
+      //  AutoCompleteBox.build(cbEquipmentPackage,equipmentPackageConverter);
+
         if (equipmentSavingDto == null) {
             this.equipmentSavingDto = new EquipmentSavingDto();
             this.lbTitle.setText("Thêm thiết bị mới");
@@ -205,6 +216,7 @@ public class EquipmentEditing  implements SavingPopupController<EquipmentSavingD
         equipmentSavingDto.setCategory(this.cbCategory.getValue());
         equipmentSavingDto.setOwner(this.tfOwner.getText());
         equipmentSavingDto.setDepartment(this.cbDepartment.getValue());
+        equipmentSavingDto.setEquipmentPackage(cbEquipmentPackage.getValue());
         equipmentSavingDto.setNote(this.taNote.getText());
         return equipmentSavingDto;
     }
@@ -221,6 +233,7 @@ public class EquipmentEditing  implements SavingPopupController<EquipmentSavingD
         this.cbCategory.setValue(this.equipmentSavingDto.getCategory());
         this.tfOwner.setText(this.equipmentSavingDto.getOwner());
         this.cbDepartment.setValue(this.equipmentSavingDto.getDepartment());
+        this.cbEquipmentPackage.setValue(this.equipmentSavingDto.getEquipmentPackage());
         this.taNote.setText(this.equipmentSavingDto.getNote());
     }
 

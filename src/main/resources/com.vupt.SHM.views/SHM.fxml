@@ -14,16 +14,17 @@
          <children>
             <MenuBar maxHeight="-Infinity" maxWidth="1.7976931348623157E308" HBox.hgrow="SOMETIMES">
                <menus>
-                  <Menu mnemonicParsing="false" text="Đơn vị">
+                  <Menu mnemonicParsing="false" text="Quản Lý Chung">
                      <items>
                         <MenuItem fx:id="menuItemEmployee" mnemonicParsing="false" onAction="#manageEmployee" text="Quản lý nhân viên" />
 <!--                        <MenuItem fx:id="menuItemRepairer" mnemonicParsing="false" onAction="#manageRepairter" text="Đơn Vị Sửa Chữa" />-->
                         <MenuItem fx:id="menuItemDepartment" mnemonicParsing="false" onAction="#manageDepartment" text="Quản lý bộ phận" />
+                        <MenuItem fx:id="menuItemCategory" mnemonicParsing="false" onAction="#manageCategory" text="Quản lý danh mục thiết bị" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Thiết Bị Phần Cứng">
                      <items>
-                        <MenuItem fx:id="menuItemCategory" mnemonicParsing="false" onAction="#manageCategory" text="Quản lý danh mục thiết bị" />
+                        <MenuItem fx:id="menuItemEquipmentPackage" mnemonicParsing="false" onAction="#manageEquipmentPackage" text="Quản lý bộ thiết bị" />
                         <MenuItem fx:id="menuItemEquipment" mnemonicParsing="false" onAction="#manageEquipment" text="Quản lý thiết bị phần cứng" />
                         <MenuItem fx:id="menuItemSwitchDepartment" mnemonicParsing="false" onAction="#switchDepartment" text="Chuyển đổi bộ phận thiết bị" />
 <!--                        <MenuItem fx:id="menuItemEquipmentGroup" mnemonicParsing="false" onAction="#manageEquipmentGroup" text="Quản lý nhóm thiết bị" />-->

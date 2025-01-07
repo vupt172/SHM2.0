@@ -4,11 +4,11 @@ config:
         \nTác giả : Phạm Tuấn Vũ
         \nĐịa điểm : Bệnh viện Đa khoa khu vực Long Thành
         \nEmail: vu.pt172@gmail.com
-        \nNgày phiên bản: 31/10/2024"
+        \nPhiên bản: 2.0.2"
     update: "Cập nhật:
                 \n -  "
 
 spring:
   profiles:
-    active: local
+    active: lan
 

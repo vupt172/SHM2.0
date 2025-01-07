@@ -67,6 +67,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                </rowConstraints>
@@ -75,11 +76,13 @@
                   <ComboBox fx:id="cbCategory" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" />
                   <Label text="Địa điểm :" GridPane.rowIndex="2" />
                   <ComboBox fx:id="cbDepartment" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Note :" GridPane.rowIndex="3" />
-                  <TextArea fx:id="taNote" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="300.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Note :" GridPane.rowIndex="4" />
+                  <TextArea fx:id="taNote" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="300.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label text="Chủ sở hữu :" GridPane.rowIndex="1" />
                   <TextField fx:id="tfOwner" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label id="form-message" fx:id="lbMessage" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label id="form-message" fx:id="lbMessage" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label text="Bộ thiết bị  :" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cbEquipmentPackage" prefHeight="34.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>

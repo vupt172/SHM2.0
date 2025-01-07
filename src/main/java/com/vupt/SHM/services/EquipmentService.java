@@ -20,12 +20,11 @@ import com.vupt.SHM.utils.DisplayTextUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class EquipmentService {
@@ -35,6 +34,8 @@ public class EquipmentService {
     CategoryService categoryService;
     @Autowired
     DepartmentService departmentService;
+    @Autowired
+    EquipmentPackageService equipmentPackageService;
 
     public List<EquipmentDto> findAll() {
         return this.mapstructMapper.equipmentsToEquipmentDtos(this.equipmentRepo.findAll());
@@ -53,7 +54,7 @@ public class EquipmentService {
                 .collect(Collectors.toList());
     }
 
-    @Transactional
+  // @Transactional
     public void save(EquipmentSavingDto equipmentSavingDto) {
         if (equipmentSavingDto.getId() == 0L) {
             Equipment newEquipment = this.mapstructMapper.equipmentSavingDtoToEquipment(equipmentSavingDto);
@@ -64,17 +65,10 @@ public class EquipmentService {
             this.equipmentRepo.save(newEquipment);
             newEquipment.setCode(newEquipment.generateCode());
             this.equipmentRepo.save(newEquipment);
-
             this.equipmentHistoryService.createEquipmentHistory(newEquipment, null, newEquipment.getDepartment(), "Tạo mới");
         } else {
             Equipment curEquipment = findById(equipmentSavingDto.getId());
-
             this.mapstructMapper.equipmentSavingDtoToSelectedEquipment(equipmentSavingDto, curEquipment);
-            Category category = this.categoryService.findById(equipmentSavingDto.getCategory().getId());
-            Department department = this.departmentService.findById(equipmentSavingDto.getDepartment().getId());
-            curEquipment.setCategory(category);
-            curEquipment.setDepartment(department);
-
             this.equipmentRepo.save(curEquipment);
         }
     }

@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -36,14 +37,11 @@ public class EmployeeService {
                 .map(employee -> this.mapstructMapper.employeeToEmployeeDto(employee))
                 .collect(Collectors.toList());
     }
-
     public void save(EmployeeDto employeeDTO) {
         if (employeeDTO.getId() == 0L) {
             checkIfExistsByName(employeeDTO.getFullName());
             checkIfExistsByUsername(employeeDTO.getUsername());
             Employee newEmployee = this.mapstructMapper.employeeDtoToEmployee(employeeDTO);
-            Department department = this.departmentService.findById(employeeDTO.getDepartmentDto().getId());
-            newEmployee.setDepartment(department);
             this.employeeRepo.save(newEmployee);
         } else {
             Employee curEmployee = findById(employeeDTO.getId());
@@ -54,8 +52,6 @@ public class EmployeeService {
                 checkIfExistsByUsername(employeeDTO.getUsername());
             }
             this.mapstructMapper.employeeDtoToSelectedEmployee(employeeDTO, curEmployee);
-            Department department = this.departmentService.findById(employeeDTO.getDepartmentDto().getId());
-            curEmployee.setDepartment(department);
             this.employeeRepo.save(curEmployee);
         }
     }

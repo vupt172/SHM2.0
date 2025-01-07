@@ -30,9 +30,9 @@
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
@@ -43,8 +43,8 @@
                         <FontAwesomeIconView glyphName="FOLDER" />
                      </graphic>
                   </Button>
-                  <Label text="File Path :" GridPane.rowIndex="1" />
-                  <TextField fx:id="tfFilePath" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="File Path :" GridPane.rowIndex="3" />
+                  <TextField fx:id="tfFilePath" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <HBox style="-fx-spacing: 5;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
                         <Button fx:id="btnExport" mnemonicParsing="false" onAction="#exportExcel" styleClass="success" text="Xuất Excel">
@@ -59,10 +59,10 @@
                         <Button mnemonicParsing="false" onAction="#clear" text="Nhập lại" />
                      </children>
                   </HBox>
-                  <Label text="Danh mục :" GridPane.rowIndex="2" />
-                  <ComboBox fx:id="cbCategory" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Bộ phận :" GridPane.rowIndex="3" />
-                  <ComboBox fx:id="cbDepartment" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Danh mục :" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="cbCategory" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Bộ phận :" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cbDepartment" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

@@ -20,11 +20,12 @@ import com.vupt.SHM.utils.DisplayTextUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.transaction.Transactional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -34,15 +35,14 @@ public class DepartmentSwitchReportService {
     @Autowired
     DepartmentSwitchReportDetailRepository departmentSwitchReportDetailRepository;
 
-    @Transactional
-    public void save(DepartmentSwitchReportSavingDto departmentSwitchReportExDto) {
+    //@Transactional
+    public void save(DepartmentSwitchReportSavingDto departmentSwitchReportSavingDto) {
         DepartmentSwitchReport departmentSwitchReport;
-        if (departmentSwitchReportExDto.getId() == 0L) {
-            departmentSwitchReport = this.mapstructMapper.departmentSwitchReportExDtoToDepartmentSwitchReport(departmentSwitchReportExDto);
-
+        if (departmentSwitchReportSavingDto.getId() == 0L) {
+            departmentSwitchReport = this.mapstructMapper.departmentSwitchReportExDtoToDepartmentSwitchReport(departmentSwitchReportSavingDto);
             departmentSwitchReport.getDepartmentSwitchReportDetailList().stream().forEach(departmentSwitchReportDetail -> departmentSwitchReportDetail.setDepartmentSwitchReport(departmentSwitchReport));
         } else {
-            departmentSwitchReport = findById(departmentSwitchReportExDto.getId());
+            departmentSwitchReport = findDepartmentSwitchReportWithDetails(departmentSwitchReportSavingDto.getId());
             if (departmentSwitchReport.isFlush()) {
                 throw new AppException("Biên bản này đã duyệt không thể cập nhật!");
             }
@@ -50,12 +50,11 @@ public class DepartmentSwitchReportService {
                     .filter(departmentSwitchReportDetail -> (departmentSwitchReportDetail.getId() > 0L))
                     .filter(departmentSwitchReportDetail -> {
                         DepartmentSwitchReportDetailDto departmentSwitchReportDetailDto = this.mapstructMapper.departmentSwitchReportDetailToDepartmentSwitchReportDetailDto(departmentSwitchReportDetail);
-
-                        boolean isExist = departmentSwitchReportExDto.getDepartmentSwitchReportDetailList().contains(departmentSwitchReportDetailDto);
+                        boolean isExist = departmentSwitchReport.getDepartmentSwitchReportDetailList().contains(departmentSwitchReportDetailDto);
                         return !isExist;
                     }).forEach(departmentSwitchReportDetail -> this.departmentSwitchReportDetailRepository.delete(departmentSwitchReportDetail));
 
-            this.mapstructMapper.departmentSwitchReportExDtoToSelectedDepartmentSwitchReport(departmentSwitchReportExDto, departmentSwitchReport);
+            this.mapstructMapper.departmentSwitchReportExDtoToSelectedDepartmentSwitchReport(departmentSwitchReportSavingDto, departmentSwitchReport);
             departmentSwitchReport.getDepartmentSwitchReportDetailList().stream().forEach(departmentSwitchReportDetail -> departmentSwitchReportDetail.setDepartmentSwitchReport(departmentSwitchReport));
         }
         this.departmentSwitchReportRepository.save(departmentSwitchReport);

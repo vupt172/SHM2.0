@@ -39,8 +39,10 @@ public interface MapstructMapper {
     @Mapping(source = "department", target = "departmentDto")
     EmployeeDto employeeToEmployeeDto(Employee paramEmployee);
 
+    @Mapping(source = "departmentDto", target = "department")
     Employee employeeDtoToEmployee(EmployeeDto paramEmployeeDto);
 
+    @Mapping(source = "departmentDto", target = "department")
     Employee employeeDtoToSelectedEmployee(EmployeeDto paramEmployeeDto, @MappingTarget Employee paramEmployee);
 
     List<EmployeeDto> employeesToEmployeeDtos(List<Employee> paramList);
@@ -67,6 +69,7 @@ public interface MapstructMapper {
 
     List<EquipmentDto> equipmentsToEquipmentDtos(List<Equipment> paramList);
 
+   // @Mapping(source = "departmentDto",target = "department")
     Equipment equipmentSavingDtoToEquipment(EquipmentSavingDto paramEquipmentSavingDto);
 
     void equipmentSavingDtoToSelectedEquipment(EquipmentSavingDto paramEquipmentSavingDto, @MappingTarget Equipment paramEquipment);
@@ -112,6 +115,14 @@ public interface MapstructMapper {
     @Mapping(source = "departmentDto",target = "department")
     void equipmentRequestSavingDtoToSelectedEquipmentRequest(EquipmentRequestSavingDto equipmentRequestSavingDto,@MappingTarget EquipmentRequest equipmentRequest);
     EquipmentRequestSavingDto equipmentRequestDtoToEquipmentRequestSavingDto(EquipmentRequestDto equipmentRequestDto);
+
+    EquipmentPackageDto equipmentPackageToEquipmentPackageDto(EquipmentPackage equipmentPackage);
+
+    List<EquipmentPackageDto> equipmentPackagesToEquipmentPackageDtos(List<EquipmentPackage> equipmentPackages);
+
+    EquipmentPackage equipmentPackageDtoToEquipmentPackage(EquipmentPackageDto equipmentPackageDto);
+
+    void equipmentPackageDtoToSelectedEquipmentPackage(EquipmentPackageDto equipmentPackageDto,@MappingTarget EquipmentPackage equipmentPackage);
 }
 
 

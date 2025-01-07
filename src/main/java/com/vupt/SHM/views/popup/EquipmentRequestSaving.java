@@ -1,10 +1,8 @@
 package com.vupt.SHM.views.popup;
 
 import com.vupt.SHM.MyApplication;
-import com.vupt.SHM.dto.CategoryDto;
 import com.vupt.SHM.dto.DepartmentDto;
 import com.vupt.SHM.dto.EquipmentRequestSavingDto;
-import com.vupt.SHM.entity.Equipment;
 import com.vupt.SHM.exceptions.AppException;
 import com.vupt.SHM.services.DepartmentService;
 import com.vupt.SHM.utils.DateTimeUtils;
@@ -33,9 +31,9 @@ public class EquipmentRequestSaving implements SavingPopupController<EquipmentRe
     @FXML
     Label lbTitle;
     @FXML
-    TextField tfId;
-    @FXML
     TextField tfName;
+    @FXML
+    TextField tfStatus;
     @FXML
     TextField tfSolution;
     @FXML
@@ -43,9 +41,11 @@ public class EquipmentRequestSaving implements SavingPopupController<EquipmentRe
     @FXML
     TextField tfResult;
     @FXML
+    TextField tfEmployeeRequest;
+    @FXML
     ComboBox<DepartmentDto> cbDepartment;
     @FXML
-    TextField tfNote;
+    TextArea taNote;
     @FXML
     Label lbMessage;
 
@@ -77,9 +77,8 @@ public class EquipmentRequestSaving implements SavingPopupController<EquipmentRe
 
     private void init(EquipmentRequestSavingDto equipmentRequestSavingDto, Consumer<EquipmentRequestSavingDto> saveHandler) {
         this.saveHandler = saveHandler;
-        this.tfId.setEditable(false);
         cbDepartment.getItems().addAll(departmentService.findAllDto());
-        AutoCompleteBox.build(cbDepartment,departmentConverter);
+        AutoCompleteBox.build(cbDepartment, departmentConverter);
         if (equipmentRequestSavingDto == null) {
             this.equipmentRequestSavingDto = new EquipmentRequestSavingDto();
             this.lbTitle.setText("Thêm giấy đề nghị mới");
@@ -110,30 +109,44 @@ public class EquipmentRequestSaving implements SavingPopupController<EquipmentRe
     @Override
     public EquipmentRequestSavingDto getValueFromForm() {
         EquipmentRequestSavingDto equipmentRequestSavingDto = new EquipmentRequestSavingDto();
-        String strId = tfId.getText().trim();
-        equipmentRequestSavingDto.setId(strId.isEmpty() ? 0 : Integer.parseInt(strId));
+        equipmentRequestSavingDto.setId(this.equipmentRequestSavingDto.getId());
         equipmentRequestSavingDto.setName(tfName.getText());
+        equipmentRequestSavingDto.setStatus(tfStatus.getText());
         equipmentRequestSavingDto.setSolution(tfSolution.getText());
         equipmentRequestSavingDto.setDate(DateTimeUtils.asDate(dpDate.getValue()));
         equipmentRequestSavingDto.setResult(tfResult.getText());
+        equipmentRequestSavingDto.setEmployeeRequest(tfEmployeeRequest.getText());
         equipmentRequestSavingDto.setDepartmentDto(cbDepartment.getValue());
-        equipmentRequestSavingDto.setNote(tfNote.getText());
+        equipmentRequestSavingDto.setNote(taNote.getText());
         return equipmentRequestSavingDto;
     }
 
     @Override
     public void setValueToForm() {
-            tfId.setText(String.valueOf(equipmentRequestSavingDto.getId()));
-            tfName.setText(equipmentRequestSavingDto.getName());
-            tfSolution.setText(equipmentRequestSavingDto.getSolution());
-            dpDate.setValue(DateTimeUtils.convertToLocalDateViaSqlDate(equipmentRequestSavingDto.getDate()));
-            tfResult.setText(equipmentRequestSavingDto.getResult());
-            cbDepartment.setValue(equipmentRequestSavingDto.getDepartmentDto());
-            tfNote.setText(equipmentRequestSavingDto.getNote());
+        tfName.setText(equipmentRequestSavingDto.getName());
+        tfStatus.setText(equipmentRequestSavingDto.getStatus());
+        tfSolution.setText(equipmentRequestSavingDto.getSolution());
+        dpDate.setValue(DateTimeUtils.convertToLocalDateViaSqlDate(equipmentRequestSavingDto.getDate()));
+        tfEmployeeRequest.setText(equipmentRequestSavingDto.getEmployeeRequest());
+        cbDepartment.setValue(equipmentRequestSavingDto.getDepartmentDto());
+        tfResult.setText(equipmentRequestSavingDto.getResult());
+        taNote.setText(equipmentRequestSavingDto.getNote());
     }
 
     @Override
     public boolean checkValidation() {
+        if(tfName.getText().trim().isEmpty()){
+            lbMessage.setText("Nội dung không được để trống");
+            return false;
+        }
+        if(cbDepartment.getValue()==null){
+            lbMessage.setText("Bộ phận không được dể trống");
+            return false;
+        }
+        if(dpDate.getValue()==null){
+            lbMessage.setText("Ngày không được để trống");
+            return false;
+        }
         return true;
     }
 }

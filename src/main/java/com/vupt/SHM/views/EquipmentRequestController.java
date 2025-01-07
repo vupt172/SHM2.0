@@ -57,18 +57,21 @@ public class EquipmentRequestController implements BaseController<EquipmentReque
     @FXML
     TableColumn<EquipmentRequestDto, String> colName;
     @FXML
+    TableColumn<EquipmentRequestDto, String> colStatus;
+    @FXML
     TableColumn<EquipmentRequestDto, String> colSolution;
     @FXML
-    TableColumn<EquipmentRequestDto, Date> colDate;
+    TableColumn<EquipmentRequestDto, String> colEmployeeRequest;
     @FXML
     TableColumn<EquipmentRequestDto, DepartmentDto> colDepartment;
+    @FXML
+    TableColumn<EquipmentRequestDto, Date> colDate;
     @FXML
     TableColumn<EquipmentRequestDto, String> colResult;
     @FXML
     TableColumn<EquipmentRequestDto, String> colNote;
     @FXML
     TableColumn<EquipmentRequestDto, Boolean> colIsDone;
-
 
     @FXML
     ComboBox<DepartmentDto> cbDepartment;
@@ -118,6 +121,7 @@ public class EquipmentRequestController implements BaseController<EquipmentReque
     public void initTableView() {
         this.colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        this.colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         this.colSolution.setCellValueFactory(new PropertyValueFactory<>("solution"));
         this.colResult.setCellValueFactory(new PropertyValueFactory<>("result"));
         this.colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -134,6 +138,7 @@ public class EquipmentRequestController implements BaseController<EquipmentReque
                 }
             };
         });
+        this.colEmployeeRequest.setCellValueFactory(new PropertyValueFactory<>("employeeRequest"));
         this.colDepartment.setCellValueFactory(new PropertyValueFactory<>("departmentDto"));
         colDepartment.setCellFactory(column -> {
             return new TableCell<EquipmentRequestDto, DepartmentDto>() {

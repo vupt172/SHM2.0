@@ -30,7 +30,7 @@ public class EquipmentByDepartmentExcelExporter {
     @Autowired
     EquipmentService equipmentService;
     public static final int FIRST_COL = 0;
-    public static final int LAST_COL = 10;
+    public static final int LAST_COL = 12;
     public static final int COLUMN_INDEX_DEPARTMENT = 0;
     public static final int COLUMN_INDEX_SUB_DEPARTMENT = 1;
     public static final int COLUMN_INDEX_STT = 2;
@@ -41,13 +41,14 @@ public class EquipmentByDepartmentExcelExporter {
     public static final int COLUMN_INDEX_COUNT = 7;
     public static final int COLUMN_INDEX_PRICE = 8;
     public static final int COLUMN_INDEX_CATEGORY = 9;
-    public static final int COLUMN_INDEX_NOTE = 10;
+    public static final int COLUMN_INDEX_DEPARTMENT1 = 12;
+    public static final int COLUMN_INDEX_EQUIPMENTPACKAGE = 10;
+    public static final int COLUMN_INDEX_NOTE = 11;
+
     public CellStyle formatNumberCellStyle;
     private int rowIndex = 0;
 
-
     private Workbook workbook;
-
     private Sheet sheet;
 
 
@@ -125,9 +126,19 @@ public class EquipmentByDepartmentExcelExporter {
         cell.setCellValue("DANH MỤC");
         cell.setCellStyle(cellStyle);
 
+        cell = row.createCell(COLUMN_INDEX_DEPARTMENT1);
+        cell.setCellValue("BỘ PHẬN");
+        cell.setCellStyle(cellStyle);
+
+        cell = row.createCell(COLUMN_INDEX_EQUIPMENTPACKAGE);
+        cell.setCellValue("BỘ THIẾT BỊ");
+        cell.setCellStyle(cellStyle);
+
         cell = row.createCell(COLUMN_INDEX_NOTE);
         cell.setCellValue("GHI CHÚ");
         cell.setCellStyle(cellStyle);
+
+
     }
 
 
@@ -154,7 +165,7 @@ public class EquipmentByDepartmentExcelExporter {
 
     public void writeDepartmentMergeCell(int colStart, DepartmentDto departmentDto) {
         CellStyle cellStyle = ExcelSheetDesigner.createStyleForDepartmentMerge(this.sheet.getWorkbook());
-        this.sheet.addMergedRegion(new CellRangeAddress(this.rowIndex, this.rowIndex, colStart, 10));
+        this.sheet.addMergedRegion(new CellRangeAddress(this.rowIndex, this.rowIndex, colStart, LAST_COL));
         Row row = this.sheet.createRow(this.rowIndex);
         Cell cell = row.createCell(colStart);
         cell.setCellValue(departmentDto.getName().toUpperCase());
@@ -190,7 +201,17 @@ public class EquipmentByDepartmentExcelExporter {
         cell = row.createCell(9);
         cell.setCellValue(equipment.getCategory().getName());
         cell.setCellStyle(cellStyle);
-        cell = row.createCell(10);
+
+        cell = row.createCell(COLUMN_INDEX_DEPARTMENT1);
+        cell.setCellValue(equipment.getDepartment().getName());
+        cell.setCellStyle(cellStyle);
+
+        cell = row.createCell(COLUMN_INDEX_EQUIPMENTPACKAGE);
+        if (equipment.getEquipmentPackage() != null)
+            cell.setCellValue(equipment.getEquipmentPackage().getName());
+        cell.setCellStyle(cellStyle);
+
+        cell = row.createCell(COLUMN_INDEX_NOTE);
         cell.setCellValue(equipment.getNote());
         cell.setCellStyle(cellStyle);
     }
@@ -205,7 +226,9 @@ public class EquipmentByDepartmentExcelExporter {
         sheet.setColumnWidth(7, 2000);
         sheet.setColumnWidth(8, 3000);
         sheet.setColumnWidth(9, 4000);
-        sheet.setColumnWidth(10, 8000);
+        sheet.setColumnWidth(10, 5000);
+        sheet.setColumnWidth(11, 7000);
+        sheet.setColumnWidth(12, 5000);
     }
 
 

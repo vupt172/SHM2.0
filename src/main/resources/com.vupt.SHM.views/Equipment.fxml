@@ -97,9 +97,9 @@
          <children>
             <TableView fx:id="tbEquipment" VBox.vgrow="ALWAYS">
                <columns>
-                  <TableColumn fx:id="colId" maxWidth="70.0" prefWidth="70.0" text="Id" />
+                  <TableColumn fx:id="colId" maxWidth="70.0" prefWidth="60.0" text="Id" />
                   <TableColumn fx:id="colName" maxWidth="1.7976931348623157E308" prefWidth="300.0" text="Tên Thiết Bị" />
-                  <TableColumn fx:id="colCode" maxWidth="1.7976931348623157E308" prefWidth="120.0" text="Code" />
+                  <TableColumn fx:id="colCode" maxWidth="1.7976931348623157E308" prefWidth="100.0" text="Code" />
                   <TableColumn fx:id="colYear" maxWidth="1.7976931348623157E308" prefWidth="70.0" text="Năm" />
                   <TableColumn fx:id="colStatus" maxWidth="1.7976931348623157E308" prefWidth="150.0" text="Trạng Thái" />
                   <TableColumn fx:id="colCount" maxWidth="1.7976931348623157E308" prefWidth="100.0" text="Số Lượng" />
@@ -107,6 +107,7 @@
                   <TableColumn fx:id="colCategory" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="Danh Mục" />
                   <TableColumn fx:id="colOwner" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="Chủ Sở Hữu" />
                   <TableColumn fx:id="colDepartment" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="Địa Điểm" />
+                  <TableColumn fx:id="colEquipmentPackage" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="Bộ Thiết Bị" />
                   <TableColumn fx:id="colNote" maxWidth="300.0" prefWidth="300.0" text="Note" />
                   <TableColumn fx:id="colCreatedDate" maxWidth="300.0" prefWidth="200.0" text="Ngày Tạo" />
                   <TableColumn fx:id="colUpdatedDate" maxWidth="300.0" prefWidth="200.0" text="Ngày Cập Nhật" />

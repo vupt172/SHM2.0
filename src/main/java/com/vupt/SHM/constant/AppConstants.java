@@ -8,6 +8,7 @@ public class AppConstants {
     public static final String MENU_EQUIPMENT = "Thiết bị";
     public static final String MENU_ROLE = "Vai trò";
     public static final String MENU_REQUIPMENT_REQUEST = "Giấy đề nghị";
+    public static final String MENU_EQUIPMENT_PACKAGE="Bộ thiết bị";
 
     public static final String MANAGE_CATEGORY = "Quản lý danh mục";
     public static final String MANAGE_ACCOUNT = "Quản lý tài khoản";
@@ -23,6 +24,7 @@ public class AppConstants {
     public static final String MANAGE_APP_AUTHORITY = "Danh sách quyền";
     public static final String MANAGE_ROLE = "Danh sách vai trò";
     public static final String MANAGE_EQUIPMENT_REQUEST="Quản lý giấy đề nghị";
+    public static final String MANAGE_EQUIPMENT_PACKAGE="Quản lý bộ thiết bị";
 }
 
 
