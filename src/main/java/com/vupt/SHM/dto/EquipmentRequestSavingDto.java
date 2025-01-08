@@ -11,8 +11,10 @@ import java.util.Date;
 public class EquipmentRequestSavingDto {
     private long id;
     private String name;
+    private String status;
     private String solution;
     private Date date;
+    private String employeeRequest;
     private DepartmentDto departmentDto;
     private String result;
     private String note;

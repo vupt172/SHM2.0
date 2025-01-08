@@ -13,7 +13,7 @@ spring:
         format_sql: true
 config:
   app:
-    version: "2.0.1"
+    version: "2.0.2"
   ftp:
     host: "192.168.60.168"
     port: 6868

@@ -13,13 +13,15 @@ import java.util.Date;
 public class EquipmentRequest  extends BaseEntity<String>{
     @Column(nullable = false)
     private String name;
+    private String status;
     private String solution;
-    @Column(nullable = false)
-    private Date date;
-    private String result;
+    private String employeeRequest;
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
+    @Column(nullable = false)
+    private Date date;
+    private String result;
     private String note;
     private boolean isDone;
 }

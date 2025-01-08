@@ -2,10 +2,8 @@ package com.vupt.SHM.views.popup;
 
 import com.vupt.SHM.MyApplication;
 import com.vupt.SHM.constant.DepartmentSwitchReason;
-import com.vupt.SHM.dto.DepartmentDto;
-import com.vupt.SHM.dto.DepartmentSwitchReportDetailDto;
-import com.vupt.SHM.dto.DepartmentSwitchReportSavingDto;
-import com.vupt.SHM.dto.EquipmentDto;
+import com.vupt.SHM.dto.*;
+import com.vupt.SHM.entity.DepartmentSwitchReport;
 import com.vupt.SHM.services.DepartmentService;
 import com.vupt.SHM.services.EquipmentService;
 import com.vupt.SHM.utils.DateTimeUtils;
@@ -140,9 +138,9 @@ public class DepartmentSwitchSaving {
     private SpinnerValueFactory<Integer> valueFactory;
     private ObservableList<DepartmentSwitchReportDetailDto> reportDetailDtoList;
     private Consumer<DepartmentSwitchReportSavingDto> saveHandler;
-    private DepartmentSwitchReportSavingDto departmentSwitchReportExDto;
+    private DepartmentSwitchReportSavingDto departmentSwitchReportSavingDto;
 
-    public static void loadView(DepartmentSwitchReportSavingDto departmentSwitchReportExDto, Consumer<DepartmentSwitchReportSavingDto> saveHandler) {
+    public static void loadView(DepartmentSwitchReportSavingDto departmentSwitchReportSavingDto, Consumer<DepartmentSwitchReportSavingDto> saveHandler) {
         try {
             Stage stage = new Stage(StageStyle.UNDECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -150,7 +148,7 @@ public class DepartmentSwitchSaving {
             loader.setControllerFactory(MyApplication.getApplicationContext()::getBean);
             stage.setScene(new Scene(loader.<Parent>load()));
             DepartmentSwitchSaving departmentSwitchSaving = loader.getController();
-            departmentSwitchSaving.init(departmentSwitchReportExDto, saveHandler);
+            departmentSwitchSaving.init(departmentSwitchReportSavingDto, saveHandler);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -190,21 +188,21 @@ public class DepartmentSwitchSaving {
     }
 
 
-    private void init(DepartmentSwitchReportSavingDto departmentSwitchReportExDto, Consumer<DepartmentSwitchReportSavingDto> saveHandler) {
+    private void init(DepartmentSwitchReportSavingDto departmentSwitchReportSavingDto, Consumer<DepartmentSwitchReportSavingDto> saveHandler) {
         this.saveHandler = saveHandler;
         this.tfId.setEditable(false);
-        if (departmentSwitchReportExDto == null) {
-            this.departmentSwitchReportExDto = new DepartmentSwitchReportSavingDto();
+        if (departmentSwitchReportSavingDto == null) {
+            this.departmentSwitchReportSavingDto = new DepartmentSwitchReportSavingDto();
             this.lbTitle.setText("THÊM MỚI BIÊN BẢN CHUYỂN ĐỔI BỘ PHẬN THIẾT BỊ");
             this.dpSwitchDate.setValue(LocalDate.now());
             this.tfDIA_CHI_A.setText("Bệnh viện đa khoa khu vực Long Thành");
             this.tfDIA_CHI_B.setText("Bệnh viện đa khoa khu vực Long Thành");
             this.reportDetailDtoList = FXCollections.observableArrayList();
         } else {
-            this.departmentSwitchReportExDto = departmentSwitchReportExDto;
+            this.departmentSwitchReportSavingDto = departmentSwitchReportSavingDto;
             this.lbTitle.setText("CẬP NHẬT BIÊN BẢN CHUYỂN ĐỔI BỘ PHẬN THIẾT BỊ");
             setFormValue();
-            this.reportDetailDtoList = FXCollections.observableList(this.departmentSwitchReportExDto.getDepartmentSwitchReportDetailList());
+            this.reportDetailDtoList = FXCollections.observableList(this.departmentSwitchReportSavingDto.getDepartmentSwitchReportDetailList());
         }
         this.tbReportDetail.setItems(this.reportDetailDtoList);
     }
@@ -298,43 +296,45 @@ public class DepartmentSwitchSaving {
     }
 
     private void setFormValue() {
-        this.cbDepartmentFrom.setValue(this.departmentSwitchReportExDto.getDepartmentFrom());
-        this.cbDepartmentTo.setValue(this.departmentSwitchReportExDto.getDepartmentTo());
-        this.dpSwitchDate.setValue(DateTimeUtils.convertToLocalDateViaSqlDate(this.departmentSwitchReportExDto.getSwitchDate()));
-        this.tfMessage.setText(this.departmentSwitchReportExDto.getMessage());
-        this.cbSwitchReason.setValue(this.departmentSwitchReportExDto.getDepartmentSwitchReason());
+        this.cbDepartmentFrom.setValue(this.departmentSwitchReportSavingDto.getDepartmentFrom());
+        this.cbDepartmentTo.setValue(this.departmentSwitchReportSavingDto.getDepartmentTo());
+        this.dpSwitchDate.setValue(DateTimeUtils.convertToLocalDateViaSqlDate(this.departmentSwitchReportSavingDto.getSwitchDate()));
+        this.tfMessage.setText(this.departmentSwitchReportSavingDto.getMessage());
+        this.cbSwitchReason.setValue(this.departmentSwitchReportSavingDto.getDepartmentSwitchReason());
 
-        this.tfBEN_GIAO_A.setText(this.departmentSwitchReportExDto.getBEN_A());
-        this.tfDAI_DIEN_A.setText(this.departmentSwitchReportExDto.getDAI_DIEN_A());
-        this.tfDIA_CHI_A.setText(this.departmentSwitchReportExDto.getDIA_CHI_A());
-        this.tfCHUC_DANH_A.setText(this.departmentSwitchReportExDto.getCHUC_DANH_A());
+        this.tfBEN_GIAO_A.setText(this.departmentSwitchReportSavingDto.getBEN_A());
+        this.tfDAI_DIEN_A.setText(this.departmentSwitchReportSavingDto.getDAI_DIEN_A());
+        this.tfDIA_CHI_A.setText(this.departmentSwitchReportSavingDto.getDIA_CHI_A());
+        this.tfCHUC_DANH_A.setText(this.departmentSwitchReportSavingDto.getCHUC_DANH_A());
 
-        this.tfBEN_NHAN_B.setText(this.departmentSwitchReportExDto.getBEN_B());
-        this.tfDAI_DIEN_B.setText(this.departmentSwitchReportExDto.getDAI_DIEN_B());
-        this.tfDIA_CHI_B.setText(this.departmentSwitchReportExDto.getDIA_CHI_B());
-        this.tfCHUC_DANH_B.setText(this.departmentSwitchReportExDto.getCHUC_DANH_B());
-        this.tfNOI_DIEN_RA.setText(this.departmentSwitchReportExDto.getNOI_DIEN_RA());
+        this.tfBEN_NHAN_B.setText(this.departmentSwitchReportSavingDto.getBEN_B());
+        this.tfDAI_DIEN_B.setText(this.departmentSwitchReportSavingDto.getDAI_DIEN_B());
+        this.tfDIA_CHI_B.setText(this.departmentSwitchReportSavingDto.getDIA_CHI_B());
+        this.tfCHUC_DANH_B.setText(this.departmentSwitchReportSavingDto.getCHUC_DANH_B());
+        this.tfNOI_DIEN_RA.setText(this.departmentSwitchReportSavingDto.getNOI_DIEN_RA());
     }
 
     private DepartmentSwitchReportSavingDto setDtoValue() {
-        this.departmentSwitchReportExDto.setDepartmentFrom(this.cbDepartmentFrom.getValue());
-        this.departmentSwitchReportExDto.setDepartmentTo(this.cbDepartmentTo.getValue());
-        this.departmentSwitchReportExDto.setSwitchDate(Date.valueOf(this.dpSwitchDate.getValue()));
-        this.departmentSwitchReportExDto.setDepartmentSwitchReason(this.cbSwitchReason.getValue());
-        this.departmentSwitchReportExDto.setMessage(this.tfMessage.getText());
+        DepartmentSwitchReportSavingDto departmentSwitchReportSavingDto=new DepartmentSwitchReportSavingDto();
+        departmentSwitchReportSavingDto.setId(this.departmentSwitchReportSavingDto.getId());
+        departmentSwitchReportSavingDto.setDepartmentFrom(this.cbDepartmentFrom.getValue());
+        departmentSwitchReportSavingDto.setDepartmentTo(this.cbDepartmentTo.getValue());
+        departmentSwitchReportSavingDto.setSwitchDate(Date.valueOf(this.dpSwitchDate.getValue()));
+        departmentSwitchReportSavingDto.setDepartmentSwitchReason(this.cbSwitchReason.getValue());
+        departmentSwitchReportSavingDto.setMessage(this.tfMessage.getText());
 
-        this.departmentSwitchReportExDto.setBEN_A(this.tfBEN_GIAO_A.getText());
-        this.departmentSwitchReportExDto.setDIA_CHI_A(this.tfDIA_CHI_A.getText());
-        this.departmentSwitchReportExDto.setCHUC_DANH_A(this.tfCHUC_DANH_A.getText());
-        this.departmentSwitchReportExDto.setDAI_DIEN_A(this.tfDAI_DIEN_A.getText());
+        departmentSwitchReportSavingDto.setBEN_A(this.tfBEN_GIAO_A.getText());
+        departmentSwitchReportSavingDto.setDIA_CHI_A(this.tfDIA_CHI_A.getText());
+        departmentSwitchReportSavingDto.setCHUC_DANH_A(this.tfCHUC_DANH_A.getText());
+        departmentSwitchReportSavingDto.setDAI_DIEN_A(this.tfDAI_DIEN_A.getText());
 
-        this.departmentSwitchReportExDto.setBEN_B(this.tfBEN_NHAN_B.getText());
-        this.departmentSwitchReportExDto.setDIA_CHI_B(this.tfDIA_CHI_B.getText());
-        this.departmentSwitchReportExDto.setCHUC_DANH_B(this.tfCHUC_DANH_B.getText());
-        this.departmentSwitchReportExDto.setDAI_DIEN_B(this.tfDAI_DIEN_B.getText());
-        this.departmentSwitchReportExDto.setNOI_DIEN_RA(this.tfNOI_DIEN_RA.getText());
-        this.departmentSwitchReportExDto.setDepartmentSwitchReportDetailList(this.reportDetailDtoList);
-        return this.departmentSwitchReportExDto;
+        departmentSwitchReportSavingDto.setBEN_B(this.tfBEN_NHAN_B.getText());
+        departmentSwitchReportSavingDto.setDIA_CHI_B(this.tfDIA_CHI_B.getText());
+        departmentSwitchReportSavingDto.setCHUC_DANH_B(this.tfCHUC_DANH_B.getText());
+        departmentSwitchReportSavingDto.setDAI_DIEN_B(this.tfDAI_DIEN_B.getText());
+        departmentSwitchReportSavingDto.setNOI_DIEN_RA(this.tfNOI_DIEN_RA.getText());
+        departmentSwitchReportSavingDto.setDepartmentSwitchReportDetailList(this.reportDetailDtoList);
+        return departmentSwitchReportSavingDto;
     }
 
     @FXML
@@ -369,8 +369,8 @@ public class DepartmentSwitchSaving {
 
     @FXML
     public void save() {
-        setDtoValue();
-        this.saveHandler.accept(this.departmentSwitchReportExDto);
+        this.departmentSwitchReportSavingDto=setDtoValue();
+        this.saveHandler.accept(this.departmentSwitchReportSavingDto);
         close();
     }
 

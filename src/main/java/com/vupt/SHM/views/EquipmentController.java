@@ -4,11 +4,7 @@ import com.vupt.SHM.MyApplication;
 import com.vupt.SHM.constant.AuthorityCode;
 import com.vupt.SHM.constant.DatetimePattern;
 import com.vupt.SHM.constant.EquipmentStatus;
-import com.vupt.SHM.dto.CategoryDto;
-import com.vupt.SHM.dto.DepartmentDto;
-import com.vupt.SHM.dto.DepartmentSwitchDto;
-import com.vupt.SHM.dto.EquipmentDto;
-import com.vupt.SHM.dto.EquipmentSavingDto;
+import com.vupt.SHM.dto.*;
 import com.vupt.SHM.exceptions.AppException;
 import com.vupt.SHM.exceptions.SQLException;
 import com.vupt.SHM.mapstruct.mapper.MapstructMapper;
@@ -22,10 +18,7 @@ import com.vupt.SHM.views.BaseController;
 import com.vupt.SHM.views.IWindowController;
 import com.vupt.SHM.views.common.CustomAlert;
 import com.vupt.SHM.views.common.CustomNotification;
-import com.vupt.SHM.views.component.AutoCompleteBox;
-import com.vupt.SHM.views.component.DepartmentConverter;
-import com.vupt.SHM.views.component.EquipmentStatusListCell;
-import com.vupt.SHM.views.component.WindowObject;
+import com.vupt.SHM.views.component.*;
 import com.vupt.SHM.views.exception.ErrorDialog;
 import com.vupt.SHM.views.popup.EquipmentEditing;
 
@@ -107,6 +100,8 @@ public class EquipmentController implements BaseController<EquipmentSavingDto> {
     private TableColumn<EquipmentDto, String> colOwner;
     @FXML
     private TableColumn<EquipmentDto, DepartmentDto> colDepartment;
+    @FXML
+    private TableColumn<EquipmentDto, EquipmentPackageDto> colEquipmentPackage;
     @FXML
     private TableColumn<EquipmentDto, String> colNote;
     @FXML
@@ -194,19 +189,20 @@ public class EquipmentController implements BaseController<EquipmentSavingDto> {
         });
 
         this.colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        colStatus.setCellFactory(column -> {
-            return new TableCell<EquipmentDto, EquipmentStatus>() {
-                @Override
-                protected void updateItem(EquipmentStatus item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (item == null || empty) {
-                        setText(null);
-                    } else {
-                        setText(item.getTitle()); // Hiển thị tên sản phẩm
-                    }
-                }
-            };
-        });
+        colStatus.setCellFactory(EquipmentStatusTableCell.forTableColumn());
+//        colStatus.setCellFactory(column -> {
+//            return new TableCell<EquipmentDto, EquipmentStatus>() {
+//                @Override
+//                protected void updateItem(EquipmentStatus item, boolean empty) {
+//                    super.updateItem(item, empty);
+//                    if (item == null || empty) {
+//                        setText(null);
+//                    } else {
+//                        setText(item.getTitle()); // Hiển thị tên sản phẩm
+//                    }
+//                }
+//            };
+//        });
         this.colCount.setCellValueFactory(new PropertyValueFactory<>("count"));
         this.colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         colPrice.setCellFactory(column -> {
@@ -242,6 +238,20 @@ public class EquipmentController implements BaseController<EquipmentSavingDto> {
             return new TableCell<EquipmentDto, DepartmentDto>() {
                 @Override
                 protected void updateItem(DepartmentDto item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || empty) {
+                        setText(null);
+                    } else {
+                        setText(item.getName()); // Hiển thị tên sản phẩm
+                    }
+                }
+            };
+        });
+        this.colEquipmentPackage.setCellValueFactory(new PropertyValueFactory<>("equipmentPackage"));
+        colEquipmentPackage.setCellFactory(column -> {
+            return new TableCell<EquipmentDto, EquipmentPackageDto>() {
+                @Override
+                protected void updateItem(EquipmentPackageDto item, boolean empty) {
                     super.updateItem(item, empty);
                     if (item == null || empty) {
                         setText(null);

@@ -11,6 +11,7 @@ import com.vupt.SHM.services.CategoryService;
 import com.vupt.SHM.services.DepartmentService;
 import com.vupt.SHM.specifications.EquipmentSpecification;
 import com.vupt.SHM.utils.DateTimeUtils;
+import com.vupt.SHM.utils.FileUtils;
 import com.vupt.SHM.views.common.CustomAlert;
 import com.vupt.SHM.views.component.AutoCompleteBox;
 import com.vupt.SHM.views.component.DepartmentConverter;
@@ -76,14 +77,9 @@ public class EquipmentReportGeneralController {
     public void selectFolder() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select a Directory");
-
         File selectedDirectory = directoryChooser.showDialog(this.tfFolder.getScene().getWindow());
         if (selectedDirectory != null) {
-            System.out.println("Selected directory: " + selectedDirectory.getAbsolutePath());
             this.tfFolder.setText(selectedDirectory.getAbsolutePath());
-            System.out.println(new Date());
-            String filePath = String.format("%s\\%s.xlsx", new Object[]{this.tfFolder.getText(), DateTimeUtils.includeTimeToString("EquipmentReport")});
-            this.tfFilePath.setText(filePath);
         } else {
             System.out.println("No directory selected.");
         }
@@ -99,16 +95,16 @@ public class EquipmentReportGeneralController {
 
     @FXML
     public void exportExcel() throws IOException {
+        String filePath = String.format("%s\\%s.xlsx",this.tfFolder.getText(), DateTimeUtils.includeTimeToString("Báo cáo thiết bị tổng hợp"));
+        this.tfFilePath.setText(filePath);
+
         CategoryDto categoryDto = this.cbCategory.getValue();
         DepartmentDto departmentDto = this.cbDepartment.getValue();
         long categoryId = (categoryDto == null) ? 0L : categoryDto.getId();
         long departmentId = (departmentDto == null) ? 0L : departmentDto.getId();
         List<Equipment> exportEquipmentList = this.equipmentRepository.findAll(EquipmentSpecification.filterSearch("", "", null, Long.valueOf(categoryId), Long.valueOf(departmentId)));
         EquipmentExcelExporter.writeExcel(exportEquipmentList, this.tfFilePath.getText());
-        CustomAlert.AlertBuilder.builder(Alert.AlertType.INFORMATION)
-                .setHeaderText(null)
-                .setTitle("Export Equipment Report")
-                .setContentText("Xuất Excel thành công!")
-                .build().show();
+
+        FileUtils.openFile(tfFilePath.getText());
     }
 }

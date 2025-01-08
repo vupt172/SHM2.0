@@ -17,12 +17,13 @@ public class EquipmentDto {
     private DepartmentDto department;
     private CategoryDto category;
     private String owner;
+    private EquipmentPackageDto equipmentPackage;
     private String note;
     private Date createdDate;
     private Date lastModifiedDate;
 
     @Override
     public String toString() {
-        return code+" "+name;
+        return code + " " + name;
     }
 }

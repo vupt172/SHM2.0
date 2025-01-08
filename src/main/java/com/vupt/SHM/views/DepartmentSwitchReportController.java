@@ -153,6 +153,16 @@ public class DepartmentSwitchReportController implements BaseController<Departme
     public void initialize() {
         initAppFunctionByRoleAndAuthorities();
         initTableView();
+        this.tbDepartmentSwitch.setItems(FXCollections.observableList(this.departmentSwitchReportService.findAll()));
+        this.tbDepartmentSwitch.setOnMouseClicked(event -> {
+          if(event.getClickCount()==2){
+              DepartmentSwitchReportDto departmentSwitchReportDto=tbDepartmentSwitch.getSelectionModel().getSelectedItem();
+              if(departmentSwitchReportDto==null)return;
+              DepartmentSwitchReportExDto departmentSwitchReportExDto= departmentSwitchReportService.getExDto(departmentSwitchReportDto.getId());
+              DepartmentSwitchReportViewing.loadView(departmentSwitchReportExDto);
+          }
+        });
+
         this.cbDepartmentFrom.setItems(FXCollections.observableList(this.departmentService.findAllDtoIgnoreSuspended()));
         this.cbDepartmentFrom.setConverter((StringConverter<DepartmentDto>) this.departmentConverter);
         AutoCompleteBox.build(this.cbDepartmentFrom, this.cbDepartmentTo);
@@ -223,13 +233,6 @@ public class DepartmentSwitchReportController implements BaseController<Departme
             };
         });
         this.colMessage.setCellValueFactory(new PropertyValueFactory<>("message"));
-        this.tbDepartmentSwitch.setItems(FXCollections.observableList(this.departmentSwitchReportService.findAll()));
-        this.tbDepartmentSwitch.setOnMouseClicked(event -> {
-            DepartmentSwitchReportDto departmentSwitchReportDto=tbDepartmentSwitch.getSelectionModel().getSelectedItem();
-            if(departmentSwitchReportDto==null)return;
-            DepartmentSwitchReportExDto departmentSwitchReportExDto= departmentSwitchReportService.getExDto(departmentSwitchReportDto.getId());
-            DepartmentSwitchReportViewing.loadView(departmentSwitchReportExDto);
-        });
         this.colIsFlush.setCellValueFactory(param -> new SimpleBooleanProperty(((DepartmentSwitchReportDto) param.getValue()).isFlush()));
         this.colIsFlush.setCellFactory(CheckBoxTableCell.forTableColumn(this.colIsFlush));
     }

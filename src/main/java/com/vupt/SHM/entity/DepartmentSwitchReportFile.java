@@ -16,7 +16,5 @@ public class DepartmentSwitchReportFile extends BaseEntity<String> {
     @ManyToOne
     @JoinColumn(name = "department_switch_report_id", nullable = false)
     private DepartmentSwitchReport departmentSwitchReport;
-
-
 }
 

@@ -1,15 +1,15 @@
 package com.vupt.SHM.entity;
 
 import com.vupt.SHM.constant.EquipmentStatus;
-import com.vupt.SHM.entity.Department;
-import com.vupt.SHM.entity.EquipmentHistory;
 import lombok.Data;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
+@Where(clause = "is_deleted=false")
 public class Equipment extends BaseEntity<String> {
     @Column(nullable = false)
     private String name;
@@ -27,6 +27,9 @@ public class Equipment extends BaseEntity<String> {
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
+    @ManyToOne
+    @JoinColumn(name = "equipment_package_id")
+    private EquipmentPackage equipmentPackage;
     private String note;
     @OneToMany(mappedBy = "equipment", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<EquipmentHistory> equipmentHistoryList;

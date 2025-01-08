@@ -15,6 +15,7 @@ public class EquipmentSavingDto {
     private String owner;
     private DepartmentDto department;
     private CategoryDto category;
+    private EquipmentPackageDto equipmentPackage;
     private String note;
 
     public String generateCode() {

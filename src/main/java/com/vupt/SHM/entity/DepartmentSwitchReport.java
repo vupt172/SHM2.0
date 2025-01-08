@@ -13,10 +13,10 @@ import java.util.List;
 @Data
 @Entity
 public class DepartmentSwitchReport extends BaseEntity<String> {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "department_from_id", nullable = false)
     private Department departmentFrom;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "department_to_id", nullable = false)
     private Department departmentTo;
     private Date switchDate;

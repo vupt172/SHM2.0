@@ -13,7 +13,7 @@ import javax.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
 public class EquipmentSpecification {
-    public static Specification<Equipment> filterSearch(String name, String code, EquipmentStatus status, Long categoryId, Long departmentId) {
+    public static Specification<Equipment> filterSearch(String name, String code,EquipmentStatus status, Long categoryId, Long departmentId) {
         return (root, criteriaQuery, criteriaBuilder) -> {
             root.join("category");
             root.join("department");

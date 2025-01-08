@@ -21,8 +21,9 @@ public class EquipmentExcelExporter {
     public static final int COLUMN_INDEX_COUNT = 5;
     public static final int COLUMN_INDEX_PRICE = 6;
     public static final int COLUMN_INDEX_CATEGORY = 7;
-    public static final int COLUMN_INDEX_DEPARTMENT = 8;
-    public static final int COLUMN_INDEX_NOTE = 9;
+    public static final int COLUMN_INDEX_EQUIPMENTPACKAGE = 8;
+    public static final int COLUMN_INDEX_DEPARTMENT = 9;
+    public static final int COLUMN_INDEX_NOTE = 10;
 
     public static void writeExcel(List<Equipment> equipmentList, String excelFilePath) throws IOException {
         Workbook workbook = getWorkbook(excelFilePath);
@@ -106,6 +107,9 @@ public class EquipmentExcelExporter {
         cell.setCellValue("DANH MỤC");
         cell.setCellStyle(cellStyle);
 
+        cell = row.createCell(COLUMN_INDEX_EQUIPMENTPACKAGE);
+        cell.setCellValue("BỘ THIẾT BỊ");
+        cell.setCellStyle(cellStyle);
 
         cell = row.createCell(COLUMN_INDEX_DEPARTMENT);
         cell.setCellValue("BỘ PHẬN");
@@ -152,6 +156,10 @@ public class EquipmentExcelExporter {
         cell.setCellValue(equipment.getCategory().getName());
         cell.setCellStyle(cellStyle);
 
+        cell = row.createCell(COLUMN_INDEX_EQUIPMENTPACKAGE);
+        if (equipment.getEquipmentPackage() != null)
+            cell.setCellValue(equipment.getEquipmentPackage().getName());
+        cell.setCellStyle(cellStyle);
 
         cell = row.createCell(COLUMN_INDEX_DEPARTMENT);
         cell.setCellValue(equipment.getDepartment().getName());
@@ -164,11 +172,11 @@ public class EquipmentExcelExporter {
 
 
     private static CellStyle createStyleForHeader(Sheet sheet) {
-        Font font = sheet.getWorkbook().createFont();
-        font.setFontName("Times New Roman");
-        font.setColor(IndexedColors.BLACK.getIndex());
+//        Font font = sheet.getWorkbook().createFont();
+//        font.setFontName("Times New Roman");
+//        font.setColor(IndexedColors.BLACK.getIndex());
         CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
-        cellStyle.setFont(font);
+//        cellStyle.setFont(font);
         cellStyle.setFillForegroundColor(IndexedColors.LIGHT_ORANGE.getIndex());
         cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         cellStyle.setBorderBottom(BorderStyle.THIN);
@@ -177,13 +185,13 @@ public class EquipmentExcelExporter {
 
 
     private static CellStyle createStyleForData(Sheet sheet) {
-        Font font = sheet.getWorkbook().createFont();
-        font.setFontName("Times New Roman");
-
-        font.setColor(IndexedColors.BLACK.getIndex());
+//        Font font = sheet.getWorkbook().createFont();
+//        font.setFontName("Times New Roman");
+//
+//        font.setColor(IndexedColors.BLACK.getIndex());
 
         CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
-        cellStyle.setFont(font);
+//        cellStyle.setFont(font);
 
         cellStyle.setAlignment(HorizontalAlignment.LEFT);
         cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);

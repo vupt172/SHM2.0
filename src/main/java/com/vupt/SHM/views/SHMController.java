@@ -80,6 +80,8 @@ public class SHMController {
     @FXML
     MenuItem menuItemCategory;
     @FXML
+    MenuItem menuItemEquipmentPackage;
+    @FXML
     MenuItem menuItemEquipment;
     List<WindowObject> windowObjectList = new ArrayList<>();
     @FXML
@@ -151,6 +153,8 @@ public class SHMController {
         this.menuItemRole.setId("Danh sách vai trò");
         this.menuItemAppAuthority.setId("Danh sách quyền");
         this.menuItemAccount.setId("Quản lý tài khoản");
+        this.menuItemEquipmentPackage.setId(AppConstants.MENU_EQUIPMENT_PACKAGE);
+
     }
 
     private void initAppFunctionByRoleAndAuthorities() {
@@ -179,7 +183,6 @@ public class SHMController {
         if (!authenticationUtils.hasAuthority(AuthorityCode.VIEW_DEPARTMENT_SWITCH.getAuthority())) {
             this.menuItemSwitchDepartment.setVisible(false);
         }
-
         if (!authenticationUtils.hasAuthority(AuthorityCode.VIEW_EQUIPMENT_HISTORY.getAuthority()))
             this.menuItemEquipmentHistory.setVisible(false);
         if (!authenticationUtils.hasAuthority(AuthorityCode.VIEW_REPORT_SYSTEM.getAuthority()))
@@ -219,6 +222,10 @@ public class SHMController {
         updateStackPane(this.menuItemEmployee, () -> EmployeeController.loadView(this.stage, this::closeView));
     }
 
+    @FXML
+    public void manageEquipmentPackage() throws IOException {
+        updateStackPane(this.menuItemEquipmentPackage, () -> EquipmentPackageController.loadView(this.stage, this::closeView));
+    }
 
     @FXML
     public void manageEquipment() throws IOException {
